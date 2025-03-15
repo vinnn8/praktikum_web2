@@ -1,0 +1,15 @@
+body {
+    background-color: #baefe1;
+}
+.clock-container {
+    background: linear-gradient(135deg, #0170b9, #4dacd2);
+    color: rgba(201, 255, 244, 0.813);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 300px;
+}
+h1 {
+    font-family: 'Courier New', monospace;
+    font-size: 3rem;
+}
