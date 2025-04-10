@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #b6e0fe, #dbe9ff, #e0f4ff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .note-app {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2d6cdf;
+  }
+  
+  .input-group input {
+    border-radius: 10px;
+  }
+  
+  .btn {
+    border-radius: 10px;
+  }
+  
+  #noteList {
+    margin-top: 20px;
+  }
+  
+  .list-group-item {
+    background-color: #f0f8ff;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    transition: all 0.2s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: #e0f0ff;
+  }
+  
+  .btn-edit, .btn-delete {
+    font-size: 0.85rem;
+    margin-left: 10px;
+  }
+  
