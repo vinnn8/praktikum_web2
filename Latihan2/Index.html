@@ -1,0 +1,90 @@
+<<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kuis Interaktif</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-default">
+<div class="quiz-container text-center">
+    <h2 class="mb-4" id="question">Apa ibu kota Indonesia?</h2>
+    <div class="d-grid gap-2">
+        <button class="btn btn-outline-primary answer-btn" onclick="checkAnswer('A')">A. Jakarta</button>
+        <button class="btn btn-outline-primary answer-btn" onclick="checkAnswer('B')">B. Surabaya</button>
+        <button class="btn btn-outline-primary answer-btn" onclick="checkAnswer('C')">C. Bandung</button>
+        <button class="btn btn-outline-primary answer-btn" onclick="checkAnswer('D')">D. Medan</button>
+    </div>
+    <div id="feedback" class="mt-3"></div>
+    <button class="btn btn-success mt-4" onclick="nextQuestion()">Soal Berikutnya</button>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "Apa ibu kota Indonesia?",
+            options: ["Jakarta", "Surabaya", "Bandung", "Medan"],
+            answer: "A"
+        },
+        {
+            question: "Siapa penemu bola lampu?",
+            options: ["Albert Einstein", "Nikola Tesla", "Thomas Edison", "Isaac Newton"],
+            answer: "C"
+        },
+        {
+            question: "Berapa hasil dari 9 x 7?",
+            options: ["56", "63", "72", "49"],
+            answer: "B"
+        },
+        {
+            question: "Apa nama planet terbesar di tata surya?",
+            options: ["Saturnus", "Neptunus", "Mars", "Jupiter"],
+            answer: "D"
+        }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion(index) {
+        const q = questions[index];
+        document.getElementById("question").textContent = q.question;
+        const buttons = document.querySelectorAll(".answer-btn");
+        buttons.forEach((btn, i) => {
+            btn.textContent = String.fromCharCode(65 + i) + ". " + q.options[i];
+            btn.disabled = false;
+            btn.classList.remove("btn-success", "btn-danger");
+            btn.classList.add("btn-outline-primary");
+        });
+        document.getElementById("feedback").textContent = "";
+    }
+
+    function checkAnswer(choice) {
+        const correct = questions[currentQuestion].answer;
+        const buttons = document.querySelectorAll(".answer-btn");
+        buttons.forEach(btn => btn.disabled = true);
+        const index = choice.charCodeAt(0) - 65;
+        const selectedBtn = buttons[index];
+
+        if (choice === correct) {
+            selectedBtn.classList.remove("btn-outline-primary");
+            selectedBtn.classList.add("btn-success");
+            document.getElementById("feedback").textContent = "Jawaban Benar!";
+            document.getElementById("feedback").style.color = "green";
+        } else {
+            selectedBtn.classList.remove("btn-outline-primary");
+            selectedBtn.classList.add("btn-danger");
+            document.getElementById("feedback").textContent = "Jawaban Salah!";
+            document.getElementById("feedback").style.color = "red";
+        }
+    }
+
+    function nextQuestion() {
+        currentQuestion = Math.floor(Math.random() * questions.length);
+        loadQuestion(currentQuestion);
+    }
+
+    loadQuestion(currentQuestion);
+</script>
+</body>
+</html>
